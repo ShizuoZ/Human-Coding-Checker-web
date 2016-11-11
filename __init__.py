@@ -7,15 +7,13 @@ app = Flask(__name__)
 
 eventLog = []
 
+app.debug = True
+
 @app.route('/')
 def index():
     return render_template('index.html')
-# @app.route('/api/workflows',method = ['POST'])
-# def post_workflows:
-#
-# @app.route('/api/workflows',method = ['GET'])
-# def get_workflows:
-@app.route('/api/v1.0/eventlog', method = ['GET'])
+
+@app.route('/api/v1.0/eventlog', methods = ['GET'])
 def get_eventlog():
     return jsonify({"eventLog" : eventLog})
 
@@ -26,8 +24,8 @@ def get_event(event_id):
         abort(404)
     return jsonify({'event': event[0]})
 
-@app.route('/api/v1.0/eventlog', method = ['POST'])
-def create_eventlog():
+@app.route('/api/v1.0/eventlog', methods = ['POST'])
+def clear_eventlog():
     if not request.json or not 'caseID' in request.json:
         abort(400)
     event = {
@@ -42,7 +40,7 @@ def create_eventlog():
     eventLog.append(event)
     return jsonify({'event': event}), 201
 
-@app.route('/api/v1.0/eventlog', method = ['DELETE'])
+@app.route('/api/v1.0/eventlog', methods = ['DELETE'])
 def create_eventlog():
     eventLog[:] = []
     return jsonify({'result': True}), 201
