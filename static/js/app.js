@@ -7,10 +7,9 @@ app.config(function($routeProvider, $locationProvider) {
     //$locationProvider.hashPrefix('!');
     $routeProvider.
       when("/", {
-        templateUrl: "/static/partials/main.html",
+        templateUrl: "static/partials/main.html",
         controller: "MainCtrl"
       }). otherwise( { redirectTo: "/" });
-
       // use the HTML5Mode History API
       $locationProvider.html5Mode(true);
 });
@@ -18,10 +17,6 @@ app.config(function($routeProvider, $locationProvider) {
 app.config(function($interpolateProvider) {
   $interpolateProvider.startSymbol('{[{');
   $interpolateProvider.endSymbol('}]}');
-});
-
-app.controller('MainCtrl', function($scope) {
-  $scope.name = 'World';
 });
 
 app.directive('fileReader', function() {
@@ -32,6 +27,7 @@ app.directive('fileReader', function() {
     link: function(scope, element) {
       $(element).on('change', function(changeEvent) {
         var files = changeEvent.target.files;
+        console.log(""+files);
         if (files.length) {
           var r = new FileReader();
           r.onload = function(e) {
@@ -40,7 +36,6 @@ app.directive('fileReader', function() {
                 scope.fileReader = contents;
               });
           };
-
           r.readAsText(files[0]);
         }
       });

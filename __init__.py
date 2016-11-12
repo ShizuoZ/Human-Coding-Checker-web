@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, Response, abort, request
+from flask import Flask, jsonify, Response, abort, request, make_response, send_file
 from urlparse import urljoin
 import datetime
 import json
@@ -11,8 +11,9 @@ app.debug = True
 
 @app.route('/')
 def index():
-    return render_template('index.html')
-
+    # return send_file('templates/index.html')
+    # disable cache index html file
+    return make_response(open('templates/index.html').read())
 @app.route('/api/v1.0/eventlog', methods = ['GET'])
 def get_eventlog():
     return jsonify({"eventLog" : eventLog})
@@ -45,5 +46,6 @@ def create_eventlog():
     eventLog[:] = []
     return jsonify({'result': True}), 201
 
+import os
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0', port = int(os.environ.get('PORT', 5050)))
