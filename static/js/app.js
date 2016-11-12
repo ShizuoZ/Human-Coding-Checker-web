@@ -1,13 +1,13 @@
 /**
  * Created by edward on 11/11/16.
  */
-var app = angular.module("MyApp", ['ngRoute']);
+var app = angular.module('MyApp', ['ngRoute']);
 
 app.config(function($routeProvider, $locationProvider) {
     //$locationProvider.hashPrefix('!');
     $routeProvider.
       when("/", {
-        templateUrl: "../templates/index.html",
+        templateUrl: "/static/partials/main.html",
         controller: "MainCtrl"
       }). otherwise( { redirectTo: "/" });
 

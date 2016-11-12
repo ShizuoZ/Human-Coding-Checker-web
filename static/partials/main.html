@@ -1,0 +1,25 @@
+<div id="app">
+    <div class="row">
+        <div class="col-md-4 col-xs-8" >
+            <p>Hello {[{name}]}!</p>
+            <input type="file" file-reader="fileContent" />
+            <div>{[{fileContent}]}</div>
+            <button type = "button" class = "btn btn-secondary">export</button>
+            <button type = "button" class = "btn btn-secondary">parameter</button>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-xs-8">
+            <pre> {[{$scope.name | json }]}</pre>
+            <table class="table">
+                <tr>
+                    <th> Case ID </th>
+                    <th> Activity </th>
+                    <th> StartTime </th>
+                    <th> EndTime </th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
