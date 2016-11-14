@@ -1,23 +1,22 @@
-<div id="app">
-    <div class="row">
-        <div class="col-md-8 col-xs-12" >
-            <p>Hello {[{name}]}!</p>
-            <input type="file" file-reader="fileContent" />
-            <button type = "button" class = "btn btn-secondary">export</button>
-            <button type = "button" class = "btn btn-secondary">parameter</button>
-            <!--<div>{[{fileContent}]}</div>-->
-        </div>
+<p> back to <a href="/#/">home page</a> </p>
+<div class="row">
+    <div class="col-md-6 col-xs-12" >
+        <p>Hello {[{name}]}</p>
+        <input type="file" file-reader="fileContent" />
+        <button type = "button" class = "btn btn-secondary">export</button>
+        <button type = "button" class = "btn btn-secondary">parameter</button>
+        <!--<div>{[{fileContent}]}</div>-->
     </div>
-    <div class="row">
-        <div class="col-md-8 col-xs-12">
-            <table class="table">
-                <tr>
-                    <th> Case ID </th>
-                    <th> Activity </th>
-                    <th> StartTime </th>
-                    <th> EndTime </th>
-                </tr>
-            </table>
-        </div>
+</div>
+<div class="row">
+    <div class="col-md-6 col-xs-12">
+        <table class="table">
+            <tr>
+                <th ng-repeat = "(key,val) in fileContent[0]">{[{key}]}</th>
+            </tr>
+            <tr ng-repeat = "item in fileContent">
+                <td ng-repeat = "(key,val) in item">{[{val}]}</td>
+            </tr>
+        </table>
     </div>
 </div>

@@ -1,7 +1,7 @@
 body, html {
     height: 100%;
     margin: 0;
-    overflow:hidden;
+    overflow:scroll;
     font-family: Times;
 }
 .row{
@@ -12,4 +12,7 @@ body, html {
 }
 p{
     font-size: 32px;
+}
+td{
+    width: 20px;
 }
